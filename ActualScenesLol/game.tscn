@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxass3hx2etb1"]
+
+[ext_resource type="PackedScene" uid="uid://d08gxsycvwv8f" path="res://ActualScenesLol/main_level.tscn" id="1_bcwxy"]
+[ext_resource type="Script" path="res://ActualScenesLol/game.gd" id="1_j2pcs"]
+[ext_resource type="PackedScene" uid="uid://ce4uvysdkyjqx" path="res://UI/pause_menu.tscn" id="2_tqhty"]
+[ext_resource type="AudioStream" uid="uid://b1x8nb6f4qil4" path="res://Music/level1.ogg" id="4_lcee8"]
+[ext_resource type="Script" path="res://Scripts/AudioStreamPlayer.gd" id="5_hj5ok"]
+
+[node name="Game" type="Node"]
+process_mode = 3
+script = ExtResource("1_j2pcs")
+
+[node name="MainLevel" parent="." instance=ExtResource("1_bcwxy")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_tqhty")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lcee8")
+autoplay = true
+script = ExtResource("5_hj5ok")

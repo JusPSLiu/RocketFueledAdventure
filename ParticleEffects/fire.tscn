@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhfrf3c78unc1"]
+
+[ext_resource type="Texture2D" uid="uid://jc48v5g3hyxj" path="res://ParticleEffects/fire.png" id="1_qcf35"]
+
+[sub_resource type="Gradient" id="Gradient_pfe3q"]
+offsets = PackedFloat32Array(0, 0.790514, 0.905138)
+colors = PackedColorArray(1, 1, 1, 1, 0.427451, 0.180392, 0.415686, 1, 0.210075, 0.072253, 0.203641, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gvyhr"]
+gradient = SubResource("Gradient_pfe3q")
+
+[sub_resource type="Curve" id="Curve_2o0fu"]
+max_value = 4.0
+_data = [Vector2(0, 1.64417), 0.0, 0.0, 0, 0, Vector2(1, 0.177914), -4.53776, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ecvm1"]
+curve = SubResource("Curve_2o0fu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s7bvi"]
+lifetime_randomness = 0.33
+emission_shape = 3
+emission_box_extents = Vector3(20, 0, 0)
+particle_flag_disable_z = true
+direction = Vector3(0, 20, 0)
+spread = 37.39
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 436.62
+initial_velocity_max = 436.62
+angular_velocity_min = 263.66
+angular_velocity_max = 263.66
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.4
+scale_max = 0.9
+scale_curve = SubResource("CurveTexture_ecvm1")
+color = Color(1.5, 1.5, 1.5, 1)
+color_ramp = SubResource("GradientTexture1D_gvyhr")
+hue_variation_min = 0.13
+hue_variation_max = 0.26
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 7.12
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.02
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+position = Vector2(0, 44)
+scale = Vector2(0.543053, 1.78773)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_s7bvi")
+texture = ExtResource("1_qcf35")
+lifetime = 0.4
+speed_scale = 1.5
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 5
+trail_section_subdivisions = 1

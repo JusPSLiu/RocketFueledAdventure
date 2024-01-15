@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnt8cdrjoo0px"]
+
+[ext_resource type="Texture2D" uid="uid://dox8hx0mcl8xi" path="res://Characters/Parts/BombyParts/bombyBack.png" id="1_pk0fr"]
+[ext_resource type="Texture2D" uid="uid://c4ttgowot87do" path="res://Characters/Parts/BombyParts/bombyArmR.png" id="2_a0f4j"]
+[ext_resource type="Script" path="res://Scripts/BombyGun.gd" id="3_qj01r"]
+[ext_resource type="Texture2D" uid="uid://blsm4osxot6i1" path="res://Characters/Parts/BombyParts/bombyArmL.png" id="3_xo25x"]
+[ext_resource type="Texture2D" uid="uid://cftkuo4i2fb4d" path="res://Characters/Parts/BombyParts/bombyFace.png" id="4_8r8j7"]
+[ext_resource type="Texture2D" uid="uid://dq2jdsuhdkycu" path="res://Characters/Parts/BombyParts/bombyNormal.png" id="4_m0evd"]
+[ext_resource type="Texture2D" uid="uid://bggu01pg5unfh" path="res://Characters/light.png" id="5_cnlop"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6aeny"]
+diffuse_texture = ExtResource("1_pk0fr")
+normal_texture = ExtResource("4_m0evd")
+
+[node name="Bomby" type="Node2D"]
+
+[node name="BombyArmL" type="Sprite2D" parent="."]
+position = Vector2(-14, -84)
+texture = ExtResource("3_xo25x")
+offset = Vector2(150, 0)
+script = ExtResource("3_qj01r")
+
+[node name="BombyBack" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = SubResource("CanvasTexture_6aeny")
+
+[node name="PointLight2D" type="PointLight2D" parent="BombyBack"]
+position = Vector2(461, -370)
+scale = Vector2(28.2573, 20.2438)
+color = Color(1, 1, 0, 1)
+texture = ExtResource("5_cnlop")
+texture_scale = 0.74
+
+[node name="BombyFace" type="Sprite2D" parent="."]
+position = Vector2(24, -230)
+texture = ExtResource("4_8r8j7")
+
+[node name="BombyArmR" type="Sprite2D" parent="."]
+position = Vector2(-57, -90)
+texture = ExtResource("2_a0f4j")
+offset = Vector2(180, 0)
+script = ExtResource("3_qj01r")

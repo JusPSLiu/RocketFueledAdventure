@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://d08gxsycvwv8f"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_bshko"]
+[ext_resource type="PackedScene" uid="uid://bnt8cdrjoo0px" path="res://Characters/bomby.tscn" id="2_78cg3"]
+[ext_resource type="PackedScene" uid="uid://dhfrf3c78unc1" path="res://ParticleEffects/fire.tscn" id="3_saupl"]
+
+[sub_resource type="Environment" id="Environment_booyo"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.03
+glow_strength = 0.81
+glow_bloom = 0.26
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sqg8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpqno"]
+size = Vector2(3.31827, 108)
+
+[node name="MainLevel" type="Node2D"]
+process_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_booyo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -728.0
+offset_top = -536.0
+offset_right = -688.0
+offset_bottom = -496.0
+scale = Vector2(64.4184, 46.9982)
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(73, 150)
+script = ExtResource("1_bshko")
+
+[node name="GPUParticles2D" parent="CharacterBody2D" instance=ExtResource("3_saupl")]
+emitting = false
+
+[node name="Bomby" parent="CharacterBody2D" instance=ExtResource("2_78cg3")]
+scale = Vector2(0.175, 0.175)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -6)
+scale = Vector2(1.6, 4)
+shape = SubResource("RectangleShape2D_0sqg8")
+
+[node name="stoppers" type="StaticBody2D" parent="."]
+
+[node name="BottomStopper" type="CollisionShape2D" parent="stoppers"]
+position = Vector2(100, 702)
+scale = Vector2(60, 1)
+shape = SubResource("RectangleShape2D_gpqno")
+
+[node name="TopStopper" type="CollisionShape2D" parent="stoppers"]
+position = Vector2(100, -54)
+scale = Vector2(60, 1)
+shape = SubResource("RectangleShape2D_gpqno")
